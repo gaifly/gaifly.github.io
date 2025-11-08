@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 字符编码 -->
+    <meta charset="UTF-8">
+    
+    <!-- 视口设置 - 响应式设计基础 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 页面标题 -->
+    <title>龙族——mod源码</title>
+    
+    <!-- 网站描述 -->
+    <meta name="description" content="网站描述信息">
+    
+    <!-- 网站关键词 -->
+    <meta name="keywords" content="关键词1,关键词2">
+    
+    <!-- 作者信息 -->
+    <meta name="author" content="吡啶的必">
+    
+    <!-- IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- 移动端主题颜色 -->
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- 外部样式表 -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* 页面特定样式 */
+        .container {
+            padding: 80px 20px;
+        }
+        
+        /* 代码展示区域特定样式 */
+        
+        /* 重置样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 基础字体和颜色 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 响应式图片 */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* 语义化区块样式 */
+        header, nav, main, section, article, aside, footer {
+            display: block;
+        }
+        
+        /* 页头样式 */
+        header {
+            background-color: #333333;
+            padding: 8px 0;
+        }
+        
+        header h1 {
+            color: white;
+            font-size: 1.5em;
+            margin: 0;
+            text-align: left;
+        }
+        header .container {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+        }
+        header {
+            padding-left: 0;
+        }
+        
+        /* 链接样式 */
+        a {
+            color: #1890ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #40a9ff;
+        }
+        
+        /* 容器样式 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 辅助类 */
+        .text-center {
+            text-align: center;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* 响应式断点示例 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 页头 -->
+    <header style="width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <h1>吡啶的必</h1>
+            <nav style="margin-left: auto;">
+                <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+                    <li><a href="index.html" style="color: white; display: block;">首页</a></li>
+                    <li><a href="gaifly.html" style="color: white; display: block;">关于</a></li>
+                    <li><a href="dragonraja.html" style="color: white; display: block;">项目</a></li>
+                    <li><a href="link.html" style="color: white; display: block;">友情链接</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <header>
+            <h1>龙族模组源码展示</h1>
+        </header>
+        
+        <main style="margin-top: 60px;">
+            <section style="background-color: #f5f5f5; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+                <h2 style="color: #34495e; margin-bottom: 15px; font-size: 24px;">龙族模组核心类</h2>
+                <pre style="background-color: #282c34; color: #abb2bf; padding: 20px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; font-size: 14px; line-height: 1.5;"><code>// 龙族模组核心类示例
+public class DragonrajaMod implements ModInitializer {
+    public static final Logger LOGGER = LoggerFactory.getLogger("dragonraja");
+    
+    @Override
+    public void onInitialize() {
+        // 注册模组功能
+        registerEntities();
+        registerItems();
+        registerBlocks();
+        registerEvents();
+        
+        LOGGER.info("龙族模组初始化完成！欢迎来到屠龙的世界！");
+    }
+    
+    private void registerEntities() {
+        // 注册龙族实体
+        Registry.register(Registry.ENTITY_TYPE, new Identifier("dragonraja", "dragon"), 
+            DragonEntity.createEntityType());
+        
+        // 注册特殊NPC
+        Registry.register(Registry.ENTITY_TYPE, new Identifier("dragonraja", "dragon_noble"), 
+            DragonNobleEntity.createEntityType());
+    }
+    
+    private void registerItems() {
+        // 注册龙族武器
+        Registry.register(Registry.ITEM, new Identifier("dragonraja", "dragon_sword"), 
+            new DragonSword(new FabricItemSettings().group(ItemGroup.COMBAT)));
+        
+        // 注册龙血药剂
+        Registry.register(Registry.ITEM, new Identifier("dragonraja", "dragon_blood_potion"), 
+            new DragonBloodPotion(new FabricItemSettings().group(ItemGroup.BREWING)));
+    }
+    
+    private void registerBlocks() {
+        // 注册龙晶矿石
+        Registry.register(Registry.BLOCK, new Identifier("dragonraja", "dragon_crystal_ore"), 
+            new DragonCrystalOre(FabricBlockSettings.of(Material.STONE).strength(3.0f, 3.0f)));
+    }
+    
+    private void registerEvents() {
+        // 注册龙族事件监听器
+        FabricDefaultMinecraftClientEvents.CLIENT_SETUP.register(this::clientSetup);
+        EntityEvents.ENTITY_SPAWN.register(this::onEntitySpawn);
+    }
+    
+    private void clientSetup(FabricClientSetupContext context) {
+        // 设置客户端渲染
+        context.enqueueWork(() -> {
+            EntityRendererRegistry.register(DragonEntityTypes.DRAGON, DragonEntityRenderer::new);
+            EntityRendererRegistry.register(DragonEntityTypes.DRAGON_NOBLE, DragonNobleEntityRenderer::new);
+        });
+    }
+    
+    private EntitySpawnResult onEntitySpawn(EntityType<?> type, ServerWorld world, BlockPos pos, ItemStack stack, Direction dir) {
+        // 处理龙族实体生成事件
+        LOGGER.info("实体生成: {}", type.getTranslationKey());
+        return EntitySpawnResult.CONTINUE;
+    }
+}
+</code></pre>
+            </section>
+            
+            <section style="background-color: #f5f5f5; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+                <h2 style="color: #34495e; margin-bottom: 15px; font-size: 24px;">龙族能力系统</h2>
+                <pre style="background-color: #282c34; color: #abb2bf; padding: 20px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; font-size: 14px; line-height: 1.5;"><code>// 龙族能力系统示例
+public class DragonAbilitySystem {
+    // 龙血纯度等级
+    public enum BloodPurity {
+        LOW, MEDIUM, HIGH, ROYAL, PERFECT
+    }
+    
+    // 获取龙血技能
+    public static List<Ability> getBloodAbilities(PlayerEntity player, BloodPurity purity) {
+        List<Ability> abilities = new ArrayList<>();
+        
+        switch (purity) {
+            case LOW:
+                abilities.add(new DragonStrength());
+                break;
+            case MEDIUM:
+                abilities.add(new DragonStrength());
+                abilities.add(new DragonSight());
+                break;
+            case HIGH:
+                abilities.add(new DragonStrength());
+                abilities.add(new DragonSight());
+                abilities.add(new DragonRegeneration());
+                break;
+            case ROYAL:
+                abilities.add(new DragonStrength());
+                abilities.add(new DragonSight());
+                abilities.add(new DragonRegeneration());
+                abilities.add(new DragonElementalControl());
+                break;
+            case PERFECT:
+                abilities.add(new DragonStrength());
+                abilities.add(new DragonSight());
+                abilities.add(new DragonRegeneration());
+                abilities.add(new DragonElementalControl());
+                abilities.add(new DragonDomain());
+                break;
+        }
+        
+        return abilities;
+    }
+    
+    // 检查玩家是否为龙族
+    public static boolean isDragon(PlayerEntity player) {
+        return player.getScoreboardTags().contains("dragon_race");
+    }
+    
+    // 设置玩家龙血纯度
+    public static void setBloodPurity(PlayerEntity player, BloodPurity purity) {
+        // 移除旧的纯度标签
+        for (BloodPurity p : BloodPurity.values()) {
+            player.removeScoreboardTag("dragon_blood_" + p.name().toLowerCase());
+        }
+        
+        // 添加新的纯度标签
+        player.addScoreboardTag("dragon_blood_" + purity.name().toLowerCase());
+    }
+    
+    // 获取玩家龙血纯度
+    public static BloodPurity getBloodPurity(PlayerEntity player) {
+        for (BloodPurity p : BloodPurity.values()) {
+            if (player.getScoreboardTags().contains("dragon_blood_" + p.name().toLowerCase())) {
+                return p;
+            }
+        }
+        return BloodPurity.LOW;
+    }
+    
+    // 激活龙化形态
+    public static void activateDragonForm(PlayerEntity player) {
+        if (!isDragon(player)) return;
+        
+        BloodPurity purity = getBloodPurity(player);
+        
+        // 应用龙化效果
+        player.addStatusEffect(new StatusEffectInstance(
+            StatusEffects.STRENGTH, 
+            600, 
+            purity.ordinal(), 
+            false, 
+            false
+        ));
+        
+        player.addStatusEffect(new StatusEffectInstance(
+            StatusEffects.RESISTANCE, 
+            600, 
+            purity.ordinal(), 
+            false, 
+            false
+        ));
+        
+        // 皇家血统以上可以飞行
+        if (purity.ordinal() >= BloodPurity.ROYAL.ordinal()) {
+            player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.SLOW_FALLING, 
+                600, 
+                0, 
+                false, 
+                false
+            ));
+        }
+    }
+}
+</code></pre>
+            </section>
+            
+            <section style="background-color: #f5f5f5; border-radius: 8px; padding: 20px;">
+                <h2 style="color: #34495e; margin-bottom: 15px; font-size: 24px;">龙族事件系统</h2>
+                <pre style="background-color: #282c34; color: #abb2bf; padding: 20px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; font-size: 14px; line-height: 1.5;"><code>// 龙族事件监听器
+public class DragonEventListener implements ServerTickCallback, PlayerTickCallback, AttackBlockCallback {
+    
+    @Override
+    public void tick(ServerTickScheduler server) {
+        // 服务器每tick执行
+        if (server.getTickCount() % 20 == 0) { // 每秒执行一次
+            checkDragonActivity(server.getWorld(World.OVERWORLD));
+        }
+    }
+    
+    @Override
+    public void tick(PlayerEntity player) {
+        // 玩家每tick执行
+        if (DragonAbilitySystem.isDragon(player)) {
+            // 龙族玩家特殊效果
+            applyDragonPassiveEffects(player);
+        }
+    }
+    
+    @Override
+    public ActionResult onAttackBlock(PlayerEntity player, World world, Hand hand, BlockPos pos, Direction direction) {
+        // 玩家破坏方块时触发
+        if (!world.isClient && DragonAbilitySystem.isDragon(player)) {
+            BloodPurity purity = DragonAbilitySystem.getBloodPurity(player);
+            
+            // 高纯度龙族可以更快破坏方块
+            if (purity.ordinal() >= BloodPurity.HIGH.ordinal()) {
+                ItemStack stack = player.getStackInHand(hand);
+                if (stack.getItem() instanceof ToolItem) {
+                    stack.damage(0, player, p -> p.sendToolBreakStatus(hand));
+                    return ActionResult.SUCCESS;
+                }
+            }
+        }
+        return ActionResult.PASS;
+    }
+    
+    private void checkDragonActivity(ServerWorld world) {
+        // 检查龙族活动并生成龙族事件
+        Random random = new Random();
+        
+        // 有1%的几率生成龙族事件
+        if (random.nextDouble() < 0.01) {
+            spawnDragonEvent(world);
+        }
+    }
+    
+    private void spawnDragonEvent(ServerWorld world) {
+        // 生成龙族事件
+        Random random = new Random();
+        BlockPos spawnPos = findSuitableSpawnPosition(world);
+        
+        if (spawnPos != null) {
+            // 随机选择事件类型
+            int eventType = random.nextInt(3);
+            
+            switch (eventType) {
+                case 0:
+                    // 龙族入侵
+                    spawnDragonInvasion(world, spawnPos);
+                    break;
+                case 1:
+                    // 龙晶出现
+                    spawnDragonCrystals(world, spawnPos);
+                    break;
+                case 2:
+                    // 龙族使者到访
+                    spawnDragonEmissary(world, spawnPos);
+                    break;
+            }
+        }
+    }
+    
+    private BlockPos findSuitableSpawnPosition(ServerWorld world) {
+        // 寻找合适的生成位置
+        // 实现省略...
+        return new BlockPos(0, 64, 0);
+    }
+    
+    private void spawnDragonInvasion(ServerWorld world, BlockPos pos) {
+        // 生成龙族入侵事件
+        // 实现省略...
+    }
+    
+    private void spawnDragonCrystals(ServerWorld world, BlockPos pos) {
+        // 生成龙晶出现事件
+        // 实现省略...
+    }
+    
+    private void spawnDragonEmissary(ServerWorld world, BlockPos pos) {
+        // 生成龙族使者到访事件
+        // 实现省略...
+    }
+    
+    private void applyDragonPassiveEffects(PlayerEntity player) {
+        // 应用龙族被动效果
+        BloodPurity purity = DragonAbilitySystem.getBloodPurity(player);
+        
+        // 根据纯度提供不同的被动效果
+        if (purity.ordinal() >= BloodPurity.MEDIUM.ordinal()) {
+            // 中等纯度以上获得夜视能力
+            if (!player.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
+                player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.NIGHT_VISION, 
+                    200, 
+                    0, 
+                    false, 
+                    false
+                ));
+            }
+        }
+        
+        // 高等纯度以上获得生命恢复
+        if (purity.ordinal() >= BloodPurity.HIGH.ordinal()) {
+            if (!player.hasStatusEffect(StatusEffects.REGENERATION)) {
+                player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.REGENERATION, 
+                    100, 
+                    0, 
+                    false, 
+                    false
+                ));
+            }
+        }
+    }
+}
+</code></pre>
+            </section>
+        </main>
+        
+        <footer style="margin-top: 50px; padding: 20px 0; text-align: center; color: #ffffff; border-top: 1px solid #ffffff;">
+            <p>龙族模组源码展示 - 仅供学习使用，请勿用于商业用途</p>
+            <p style="margin-top: 10px;">如有建议，请联系作者</p>
+        </footer>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // 在这里添加JavaScript代码
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面加载完成后执行
+            console.log('页面已加载');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 字符编码 -->
+    <meta charset="UTF-8">
+    
+    <!-- 视口设置 - 响应式设计基础 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 页面标题 -->
+    <title>友情链接</title>
+    
+    <!-- 网站描述 -->
+    <meta name="description" content="网站描述信息">
+    
+    <!-- 网站关键词 -->
+    <meta name="keywords" content="关键词1,关键词2">
+    
+    <!-- 作者信息 -->
+    <meta name="author" content="吡啶的必">
+    
+    <!-- IE兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- 移动端主题颜色 -->
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- 外部样式表 -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    
+</head>
+<body>
+    <!-- 页头 -->
+    <header style="width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <h1>吡啶的必</h1>
+            <nav style="margin-left: auto;">
+                <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+                    <li><a href="index.html" style="color: white; display: block;">首页</a></li>
+                    <li><a href="gaifly.html" style="color: white; display: block;">关于</a></li>
+                    <li><a href="dragonraja.html" style="color: white; display: block;">项目</a></li>
+                    <li><a href="link.html" style="color: white; display: block;">友情链接</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <div class="next-container">
+        <div class="next-layout">
+            <!-- 主要内容 -->
+            <div class="next-main">
+                <h2>友情链接</h2>
+            
+            <!-- 友情链接图片网格 -->
+            <!-- 如何自定义友情图片链接：
+                 1. 修改 <a> 标签的 href 属性为目标网站URL
+                 2. 修改 <img> 标签的 src 属性为图标图片URL（可以是在线图片或本地图片）
+                 3. 修改 <img> 标签的 alt 属性为描述文本
+                 4. 修改 <p> 标签中的文本为网站名称
+                 5. 如需添加新链接，复制整个友情链接项并修改相应内容 -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto;">
+                <!-- 友情链接项 1 - 自定义示例 -->
+                <a href="https://beishanair.github.io/" target="_blank" style="display: block; text-decoration: none; border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 120px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                        <!-- 使用本地图片 -->
+                        <img src="images/BS.png" alt="北山老师的博客" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center;">
+                        <p style="margin: 0; color: #333; font-size: 14px;">北山老师的博客</p>
+                    </div>
+                </a>
+                
+                <!-- 友情链接项 2 - 自定义示例（使用本地图片） -->
+                <a href="https://www.mcmod.cn/" target="_blank" style="display: block; text-decoration: none; border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 120px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                        <!-- 使用本地图片 -->
+                        <img src="images/MC百科.png" alt="MC百科" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center;">
+                        <p style="margin: 0; color: #333; font-size: 14px;">MC百科</p>
+                    </div>
+                </a>
+                
+                <!-- 友情链接项 3 -->
+                <a href="https://afdian.com/a/LTCat" target="_blank" style="display: block; text-decoration: none; border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 120px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/PCL.png" alt="龙腾猫跃" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center;">
+                        <p style="margin: 0; color: #333; font-size: 14px;">龙腾猫跃</p>
+                    </div>
+                </a>
+                
+                <!-- 友情链接项 4 -->
+                <a href="https://www.oracle.com/cn/java/technologies/downloads/" target="_blank" style="display: block; text-decoration: none; border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 120px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/java.png" alt="Java技术下载" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center;">
+                        <p style="margin: 0; color: #333; font-size: 14px;">Java技术下载</p>
+                    </div>
+                </a>
+                
+                <!-- 友情链接项 5 -->
+                <a href="https://baike.baidu.com/item/%E9%BE%99%E6%97%8F/2373856" target="_blank" style="display: block; text-decoration: none; border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 120px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/绘梨衣.png" alt="龙族" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center;">
+                        <p style="margin: 0; color: #333; font-size: 14px;">龙族</p>
+                    </div>
+                </a>
+                
+                <!-- 友情链接项 6 -->
+                <a href="https://www.jetbrains.com.cn/idea/promo/?utm_source=bing.cn&utm_medium=cpc&utm_campaign=cn-bing-pro-intellij-ex-pc&utm_content=intellij-java+ide&utm_term=java%20idea&msclkid=c375cfb89fbf189b7c83a6b4ee65a599" target="_blank" style="display: block; text-decoration: none; border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 120px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/idea.png" alt="IntelliJ IDEA" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                    </div>
+                    <div style="padding: 10px; text-align: center;">
+                        <p style="margin: 0; color: #333; font-size: 14px;">IntelliJ IDEA</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 侧边栏 -->
+        <div style="
+            flex: 1;
+            max-width: 300px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        ">
+            <img src="images/头像.jpg" alt="吡啶的必" style="display: block; width: 60%; margin: 0 auto 20px auto; border-radius: 8px;">
+            <p style="text-align: center; font-size: 14px; margin: 0 0 15px 0;">吡啶的必</p>
+            <h3><b>龙族</b></h3>
+            <p>江南的小说《龙族》是一个关于龙族世界的精彩故事，我将其带入Minecraft游戏中，通过开发模组让更多玩家体验到这个精彩的世界观。</p>
+            <ul style="list-style: none; padding: 0; text-align: left;">
+                <li><a href="index.html" style="color: rgb(68, 119, 230); display: block;">首页</a></li>
+                <li><a href="gaifly.html" style="color: rgb(68, 119, 230); display: block;">关于</a></li>
+                <li><a href="dragonraja.html" style="color: rgb(68, 119, 230); display: block;">项目</a></li>
+                <li><a href="link.html" style="color: rgb(68, 119, 230); display: block;">友情链接</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+    <!-- JavaScript -->
+    <script>
+        // 在这里添加JavaScript代码
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面加载完成后执行
+            console.log('页面已加载');
+        });
+    </script>
+</body>
+</html>
